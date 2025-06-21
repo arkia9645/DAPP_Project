@@ -6,7 +6,7 @@ I codici sono copie di AnaEx01 a cui sono state apportate piccole modifiche per 
 ## Modifiche apportate
 
 - AnaEx01.cc:
-  * Ho inserito dei setter per modificare materiali e geometria del detector per ottere un unico blocco di Alluminio di 5X<sub>0<\sub>
+  * Ho inserito dei setter per modificare materiali e geometria del detector per ottere un unico blocco di Alluminio di 5X<sub>0</sub>
   * Ho aggiundo un `while` che salva in un file root, con lo stesso nome della macro, gli istogrammi ottenuti alla fine della simulazione(es. gamma.mac->gamma.root). Se la simulazione viene lanciata senza macro gli istogrammi verranno automaticamente salvati in "AnaEx001.root".
   
 - ActionInizialize:
