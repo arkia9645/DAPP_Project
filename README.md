@@ -13,7 +13,7 @@ I codici sono copie di AnaEx01 a cui sono state apportate piccole modifiche per 
   * Ho modificato sia `header` che `source` aggiungendo una variabile stringa che passa il nome della macro a HistoManager
 
 - HistoManager:
-  * Ho aggiunto la variabile stringa da passare a ???
+  * Ho aggiunto la variabile stringa da passare ad `analysisManager->OpenFile()`
   * Ho modificato le impostazioni di default degli istogrammi portando i bin da 100 a 300, e il massimo da 800 MeV A 5 GeV
 
 - StackingEvent.cc:
