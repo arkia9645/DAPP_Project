@@ -1,0 +1,7 @@
+/root/geant4-exercises/Project/build/CMakeFiles/AnaEx01.dir
+/root/geant4-exercises/Project/build/CMakeFiles/edit_cache.dir
+/root/geant4-exercises/Project/build/CMakeFiles/rebuild_cache.dir
+/root/geant4-exercises/Project/build/CMakeFiles/list_install_components.dir
+/root/geant4-exercises/Project/build/CMakeFiles/install.dir
+/root/geant4-exercises/Project/build/CMakeFiles/install/local.dir
+/root/geant4-exercises/Project/build/CMakeFiles/install/strip.dir
