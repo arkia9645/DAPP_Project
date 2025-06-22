@@ -21,4 +21,3 @@ I codici sono copie di AnaEx01 a cui sono state apportate piccole modifiche per 
  
 - gamma.mac:
   * Ho portato l'energia da 10 Mev a 10 GeV, il numero di eventi a 100.000, settato tutti i `verbose` a 0 e impostato `/vis/disable` e `/tracking/storeTrajectory 0`
->>>>>>> 0705dc5f464562ae52571f5af6b2477fb0c588b0
