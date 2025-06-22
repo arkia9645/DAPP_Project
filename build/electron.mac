@@ -19,9 +19,9 @@
 /gps/verbose 0
 
 /gps/particle e-
-/gps/position -10 0 0 cm
+/gps/position -5 0 0 cm
 /gps/direction 1 0 0
 /gps/energy 10 GeV
 /vis/disable
 /tracking/storeTrajectory 0
-/run/beamOn 1000
+/run/beamOn 100000
