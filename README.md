@@ -20,4 +20,4 @@ I codici sono copie di AnaEx01 a cui sono state apportate piccole modifiche per 
   * Ho commentato la riga in cui viene stampato per ogni evento il numero di positroni(nPositrons) stampato su terminale per evitare print inutili
  
 - gamma.mac:
-  * Ho portato l'energia da 10 Mev a 10 GeV, il numero di eventi a 1 Mln, settato tutti i `verbose` a 0 e impostato `/vis/disable` e `/tracking/storeTrajectory 0`
+  * Ho portato l'energia da 10 Mev a 10 GeV, il numero di eventi a 100.000, settato tutti i `verbose` a 0 e impostato `/vis/disable` e `/tracking/storeTrajectory 0`
