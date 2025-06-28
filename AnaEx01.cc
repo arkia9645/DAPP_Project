@@ -100,7 +100,7 @@ int main(int argc,char** argv)
   //https://geant4.web.cern.ch/node/302
   //EM physics lists
   //https://geant4.web.cern.ch/node/146
-  physListName = "QGSP_BIC_LIV";
+  physListName = "QGSP_BIC_EMZ";
   // Check if the name is known to the factory
   if ( physListName.size() &&  (! factory.IsReferencePhysList(physListName) ) ) {
     G4cerr << "Physics list " << physListName

@@ -19,7 +19,7 @@ The codes are copies of AnaEx01 to which small modifications have been made to m
   * I commented out the line that printed the number of positrons (nPositrons) to the terminal for each event to avoid unnecessary prints  
 
 - gamma.mac:  
-  * I changed the energy from 10 MeV to 662 keV, the number of events to 100,000, set all `verbose` to 0, and set `/vis/disable` and `/tracking/storeTrajectory 0`  
+  * I changed the energy from 10 MeV to 662 keV, the number of events to 1 Mln, set all `verbose` to 0, and set `/vis/disable` and `/tracking/storeTrajectory 0`  
 
 - plotHisto.C:  
   * I removed the plots of histograms that are not relevant to our case
