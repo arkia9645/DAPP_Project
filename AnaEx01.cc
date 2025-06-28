@@ -100,7 +100,7 @@ int main(int argc,char** argv)
   //https://geant4.web.cern.ch/node/302
   //EM physics lists
   //https://geant4.web.cern.ch/node/146
-  physListName = "QGSP_BIC_EMZ";
+  physListName = "QGSP_BIC_LIV";
   // Check if the name is known to the factory
   if ( physListName.size() &&  (! factory.IsReferencePhysList(physListName) ) ) {
     G4cerr << "Physics list " << physListName
@@ -114,8 +114,8 @@ int main(int argc,char** argv)
   //
   DetectorConstruction* detector = new DetectorConstruction;
   runManager->SetUserInitialization(detector);
-  detector->SetAbsorberMaterial("G4_Al");
-  detector->SetAbsorberThickness(5*8.897*cm);
+  detector->SetAbsorberMaterial("G4_POLYSTYRENE");
+  detector->SetAbsorberThickness(10*cm);
   detector->SetGapMaterial("G4_Galactic");
   detector->SetGapThickness(0.0);
   detector->SetNbOfLayers(1);
@@ -130,7 +130,7 @@ int main(int argc,char** argv)
       fileOut+=*c;
       c++;
     }
-    runManager->SetUserInitialization(new ActionInitialization(detector, fileOut));
+    runManager->SetUserInitialization(new ActionInitialization(detector, fileOut+physListName));
   } else {
     runManager->SetUserInitialization(new ActionInitialization(detector));
   }

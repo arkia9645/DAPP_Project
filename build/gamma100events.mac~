@@ -24,4 +24,4 @@
 /gps/energy 662 keV
 /vis/disable
 /tracking/storeTrajectory 0
-/run/beamOn 100000
+/run/beamOn 10

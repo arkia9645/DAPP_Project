@@ -1,0 +1,49 @@
+void fit_compton_edge() {
+  // Apri il file ROOT
+  TFile *f = TFile::Open("gammaQGSP_BIC_LIV.root");
+  if (!f || f->IsZombie()) {
+    std::cerr << "Errore nell'apertura del file ROOT!" << std::endl;
+    return;
+  }
+
+  // Accedi alla TDirectory "histo"
+  TDirectory *dir = (TDirectory*)f->Get("histo");
+  if (!dir) {
+    std::cerr << "Directory 'histo' non trovata!" << std::endl;
+    return;
+  }
+
+  // Recupera l'istogramma "EAbs"
+  TH1D *hist = (TH1D*)dir->Get("EAbs");
+  if (!hist) {
+    std::cerr << "Istogramma 'EAbs' non trovato!" << std::endl;
+    return;
+  }
+
+  // Mostra l'istogramma
+  TCanvas *c1 = new TCanvas("c1", "Fit Compton Edge", 800, 600);
+  hist->SetLineColor(kBlue+2);
+  hist->SetLineWidth(2);
+  hist->Draw();
+
+  // Crea funzione di fit basata su erfc
+  TF1 *comptonEdgeFit = new TF1("comptonEdgeFit",
+    "[0]*TMath::Erfc((x - [1])/(sqrt(2)*[2])) + [3]", 300, 700);  // in keV
+
+  // Imposta parametri iniziali
+  comptonEdgeFit->SetParameters(1000, 478, 20, 10); // ampiezza, CE, sigma, fondo
+  comptonEdgeFit->SetParNames("Amplitude", "ComptonEdge", "Sigma", "Background");
+
+  // Fit dell'istogramma
+  hist->Fit(comptonEdgeFit, "R");
+
+  // Mostra il risultato
+  comptonEdgeFit->SetLineColor(kRed);
+  comptonEdgeFit->Draw("same");
+
+  c1->Update();
+
+  // Stampa il valore stimato della Compton edge
+  double comptonEdge = comptonEdgeFit->GetParameter(1);
+  std::cout << "Stima Compton Edge: " << comptonEdge << " keV" << std::endl;
+}

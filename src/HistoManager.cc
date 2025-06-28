@@ -86,7 +86,7 @@ void HistoManager::Book()
     // analysisManager->SetFirstHistoId(1);
 
     // id = 0
-    analysisManager->CreateH1("EAbs","Edep in absorber (MeV)", 300, 0., 5000*MeV);
+    analysisManager->CreateH1("EAbs","Edep in absorber (MeV)", 700, 0., 700*keV);
     // id = 1
     analysisManager->CreateH1("EGap","Edep in gap (MeV)", 100, 0., 100*MeV);
     // id = 2
