@@ -21,7 +21,7 @@ void different_size() {
   leg->SetBorderSize(0);
   leg->SetFillStyle(0);
 for (size_t i = 0; i < dim.size(); ++i) {
-    std::string file_name = "gammaQGSP_BIC_LIV10_" + dim[i] + ".root";
+    std::string file_name = "gammaQGSP_BIC_EMZ10_" + dim[i] + ".root";
     TFile* f = TFile::Open(file_name.c_str(), "READ");
 
     TDirectory* dir = dynamic_cast<TDirectory*>(f->Get("histo"));
