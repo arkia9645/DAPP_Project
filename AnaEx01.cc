@@ -71,6 +71,8 @@
 #include "G4VisExecutive.hh"
 #include "G4UIExecutive.hh"
 #include "G4SystemOfUnits.hh"
+#include "G4String.hh"
+#include <string>
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 int main(int argc,char** argv)
@@ -100,7 +102,11 @@ int main(int argc,char** argv)
   //https://geant4.web.cern.ch/node/302
   //EM physics lists
   //https://geant4.web.cern.ch/node/146
-  physListName = "QGSP_BIC_EMZ";
+  physListName = "QGSP_BIC_LIV";
+  G4int detector_len =25;
+  std::string detector_len_str =  std::to_string(detector_len);
+  G4int detector_size = 4;
+  std::string detector_size_str =  std::to_string(detector_size);
   // Check if the name is known to the factory
   if ( physListName.size() &&  (! factory.IsReferencePhysList(physListName) ) ) {
     G4cerr << "Physics list " << physListName
@@ -115,13 +121,14 @@ int main(int argc,char** argv)
   DetectorConstruction* detector = new DetectorConstruction;
   runManager->SetUserInitialization(detector);
   detector->SetAbsorberMaterial("G4_POLYSTYRENE");
-  detector->SetAbsorberThickness(10*cm);
+  detector->SetAbsorberThickness(detector_len*cm);
+  detector->SetCalorSizeYZ(detector_size*cm);
   detector->SetGapMaterial("G4_Galactic");
   detector->SetGapThickness(0.0);
   detector->SetNbOfLayers(1);
   runManager->SetUserInitialization(physList);
 
-  // Set user action classes
+  // Set user action class 
   //
   if(argc>1){
     G4String fileOut;
@@ -130,7 +137,7 @@ int main(int argc,char** argv)
       fileOut+=*c;
       c++;
     }
-    runManager->SetUserInitialization(new ActionInitialization(detector, fileOut+physListName));
+    runManager->SetUserInitialization(new ActionInitialization(detector, fileOut+physListName+detector_len_str+"_"+detector_size_str));
   } else {
     runManager->SetUserInitialization(new ActionInitialization(detector));
   }

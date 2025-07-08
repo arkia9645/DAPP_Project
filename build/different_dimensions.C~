@@ -1,0 +1,70 @@
+// different_dimensions.C
+#include <TFile.h>
+#include <TH1.h>
+#include <TCanvas.h>
+#include <TLegend.h>
+#include <vector>
+#include <string>
+
+void different_dimensions() {
+    // Nomi dei file e colori/marker
+    vector<char> dim = {'5', '10', '15', 
+    std::vector<Color_t> colors = {kBlue, kRed, kGreen+2, kBlack, kOrange+1};
+    std::vector<Style_t> markers = {20, 21, 22, 23, 33}; // cerchio, quadrato, triangolo, croce, asterisco
+
+    // Canvas
+    TCanvas* c = new TCanvas("c", "EAbs da diverse dimensioni", 800, 600);
+    c->SetLogy(); // se vuoi asse Y logaritmico, altrimenti commenta
+
+    // Legend
+    TLegend* leg = new TLegend(0.65,0.65,0.88,0.88);
+    leg->SetBorderSize(0);
+    leg->SetFillStyle(0);
+
+    // Loop sui file
+    for (size_t i = 0; i < files.size(); ++i) {
+        // Apri file
+        TFile* f = TFile::Open(files[i].c_str(), "READ");
+        if (!f || f->IsZombie()) {
+            printf("Errore nell'aprire %s\n", files[i].c_str());
+            continue;
+        }
+
+        // Prendi la directory "histo" e l'istogramma EAbs
+        f->cd("histo");
+        TH1* h = nullptr;
+        h = dynamic_cast<TH1*>(gDirectory->Get("EAbs"));
+        if (!h) {
+            printf("Istogramma EAbs non trovato in %s\n", files[i].c_str());
+            f->Close();
+            continue;
+        }
+
+        // Imposta stile
+        h->SetMarkerColor(colors[i]);
+        h->SetLineColor(colors[i]);
+        h->SetMarkerStyle(markers[i]);
+        h->SetMarkerSize(1.2);
+
+        // Draw
+        if (i == 0) {
+            h->Draw("PE");  // primo istogramma
+            // Titoli assi
+            h->SetTitle("Istogrammi EAbs;EAbs [unità];Conteggi");
+        } else {
+            h->Draw("PE SAME");
+        }
+
+        // Aggiungi alla legenda
+        leg->AddEntry(h, files[i].c_str(), "P");
+
+        // Chiudi file
+        f->Close();
+    }
+
+    // Disegna legenda
+    leg->Draw();
+
+    // Aggiorna canvas
+    c->Update();
+}
